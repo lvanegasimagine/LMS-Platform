@@ -16,6 +16,17 @@ pnpm dev
 
 ```bash
 npm install @clerk/nextjs
+npm install react-hot-toast
+```
+
+## Backend Initial
+
+```bash
+npm i -D prisma
+npx prisma init
+npx prisma generate
+npx prisma db push
+npx prisma studio
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
