@@ -17,6 +17,7 @@ pnpm dev
 ```bash
 npm install @clerk/nextjs
 npm install react-hot-toast
+npm install uploadthing @uploadthing/react react-dropzone
 ```
 
 ## Backend Initial
@@ -28,6 +29,13 @@ npx prisma generate
 npx prisma db push
 npx prisma studio
 ```
+
+### Resources
+
+https://uploadthing.com/ => Bucket de almacenamiento
+https://clerk.com/docs => Autenticacion
+https://ui.shadcn.com/ => UI
+https://planetscale.com/ => MYSQL
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
