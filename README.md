@@ -30,6 +30,12 @@ npx prisma db push
 npx prisma studio
 ```
 
+### Execution Seed
+
+```bash
+node scripts/seed.ts
+```
+
 ### Resources
 
 https://uploadthing.com/ => Bucket de almacenamiento

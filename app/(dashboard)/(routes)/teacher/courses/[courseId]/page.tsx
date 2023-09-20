@@ -4,8 +4,7 @@ import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 import { IconBadge } from '@/components/icon-badge'
 import { LayoutDashboard } from 'lucide-react'
-import { TitleForm, DescriptionForm } from './_components'
-import ImageForm from './_components/Image_Form'
+import { TitleForm, DescriptionForm, ImageForm, CategoryForm } from './_components'
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     const { userId } = auth()
@@ -18,7 +17,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         }
     })
 
+    const categories = await db.category.findMany({
+        orderBy: {
+            name: 'asc'
+        }
+    })
+
+    console.log("🚀 ~ file: page.tsx:26 ~ CourseIdPage ~ categories:", categories)
     if (!course) return redirect('/')
+
 
     const requiredFields = [
         course.title,
@@ -59,7 +66,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                         initialData={course}
                         courseId={course.id}
                     />
+                    <CategoryForm
+                        initialData={course}
+                        courseId={course.id}
+                        options={categories.map((category) => ({ label: category.name, value: category.id }))}
+                    />
                 </div>
+                <div className='space-y-6'></div>
             </div>
         </div>
     )
