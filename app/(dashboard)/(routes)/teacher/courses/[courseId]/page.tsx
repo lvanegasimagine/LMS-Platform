@@ -4,7 +4,7 @@ import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 import { IconBadge } from '@/components/icon-badge'
 import { CircleDollarSign, File, LayoutDashboard, ListChecks } from 'lucide-react'
-import { TitleForm, DescriptionForm, ImageForm, CategoryForm, PriceForm, AttachmentForm } from './_components'
+import { TitleForm, DescriptionForm, ImageForm, CategoryForm, PriceForm, AttachmentForm, ChaptersForm } from './_components'
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     const { userId } = auth()
@@ -14,8 +14,14 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     const course = await db.course.findUnique({
         where: {
             id: params.courseId,
+            userId
         },
         include: {
+            chapters: {
+                orderBy: {
+                    position: 'asc'
+                }
+            },
             attachments: {
                 orderBy: {
                     createdAt: 'desc'
@@ -30,16 +36,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         }
     })
 
-    console.log("🚀 ~ file: page.tsx:26 ~ CourseIdPage ~ categories:", categories)
     if (!course) return redirect('/')
-
 
     const requiredFields = [
         course.title,
         course.description,
         course.imageUrl,
         course.price,
-        course.categoryId
+        course.categoryId,
+        course.chapters.some(chapter => chapter.isPublished)
     ]
 
     const totalFields = requiredFields.length;
@@ -85,9 +90,10 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                             <IconBadge icon={ListChecks} />
                             <h2 className="text-xl">Course Chapters</h2>
                         </div>
-                        <div>
-                            TODO: Chapters
-                        </div>
+                        <ChaptersForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
                     </div>
                     <div>
                         <div className='flex items-center gap-x-2'>
