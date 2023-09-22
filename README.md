@@ -19,6 +19,7 @@ npm install @clerk/nextjs
 npm install react-hot-toast
 npm install uploadthing @uploadthing/react react-dropzone
 npm install react-quill ==> Editor de blogs
+npm install @mux/mux-node && npm install @mux/mux-player-react ==> Preview de Videos
 ```
 
 ## Backend Initial
@@ -43,6 +44,7 @@ https://uploadthing.com/ => Bucket de almacenamiento
 https://clerk.com/docs => Autenticacion
 https://ui.shadcn.com/ => UI
 https://planetscale.com/ => MYSQL
+https://dashboard.mux.com/organizations/4jdo85/environments/8vkcln/video/assets => Preview De videos
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
