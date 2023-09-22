@@ -18,6 +18,7 @@ pnpm dev
 npm install @clerk/nextjs
 npm install react-hot-toast
 npm install uploadthing @uploadthing/react react-dropzone
+npm install react-quill ==> Editor de blogs
 ```
 
 ## Backend Initial
