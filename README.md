@@ -20,6 +20,8 @@ npm install react-hot-toast
 npm install uploadthing @uploadthing/react react-dropzone
 npm install react-quill ==> Editor de blogs
 npm install @mux/mux-node && npm install @mux/mux-player-react ==> Preview de Videos
+npm install zustand ==> Manejo de Estado global
+npm install react-confetti
 ```
 
 ## Backend Initial
