@@ -22,6 +22,8 @@ npm install react-quill ==> Editor de blogs
 npm install @mux/mux-node && npm install @mux/mux-player-react ==> Preview de Videos
 npm install zustand ==> Manejo de Estado global
 npm install react-confetti
+npm install query-string
+npm install react-icons
 ```
 
 ## Backend Initial
