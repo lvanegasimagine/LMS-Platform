@@ -34,6 +34,7 @@ npx prisma init
 npx prisma generate
 npx prisma db push
 npx prisma studio
+npx prisma migrate reset ==> Elimina toda la BD
 ```
 
 ### Execution Seed
