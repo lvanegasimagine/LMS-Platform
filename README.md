@@ -24,6 +24,7 @@ npm install zustand ==> Manejo de Estado global
 npm install react-confetti
 npm install query-string
 npm install react-icons
+npm install stripe
 ```
 
 ## Backend Initial
