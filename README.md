@@ -25,6 +25,7 @@ npm install react-confetti
 npm install query-string
 npm install react-icons
 npm install stripe
+npm install recharts ==> Graficos
 ```
 
 ## Backend Initial

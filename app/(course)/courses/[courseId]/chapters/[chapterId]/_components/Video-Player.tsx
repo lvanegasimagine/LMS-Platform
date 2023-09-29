@@ -21,6 +21,32 @@ interface VideoPlayerProps {
 }
 const VideoPlayer = ({ chapterId, title, courseId, nextChapterId, playbackId, isLocked, completeOnEnd }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState<boolean>(false)
+  const router = useRouter()
+  const confetti = useConfettiStore();
+
+  const onEnd = async () => {
+    try {
+      if (completeOnEnd) {
+        await axios.put(`/api/courses/${courseId}/chapters/${chapterId}/progress`, {
+          isCompleted: true
+        })
+
+        if (!nextChapterId) {
+          confetti.onOpen()
+        }
+
+        toast.success("Progress Updated")
+        router.refresh();
+
+        if (nextChapterId) {
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`)
+        }
+      }
+    } catch (error) {
+      toast.error("Something went wrong")
+    }
+  }
+
   return (
     <div className='relative aspect-video'>
       {!isLocked && !isReady && (
@@ -35,7 +61,7 @@ const VideoPlayer = ({ chapterId, title, courseId, nextChapterId, playbackId, is
         </div>
       )}
       {!isLocked && (
-        <MuxPlayer title={title} className={cn(!isReady && "hidden")} onCanPlay={() => setIsReady(true)} onEnded={() => { }} autoPlay playbackId={playbackId} />
+        <MuxPlayer title={title} className={cn(!isReady && "hidden")} onCanPlay={() => setIsReady(true)} onEnded={onEnd} autoPlay playbackId={playbackId} />
       )}
     </div>
   )
