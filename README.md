@@ -16,7 +16,42 @@ pnpm dev
 
 ```bash
 npm install @clerk/nextjs
+npm install react-hot-toast
+npm install uploadthing @uploadthing/react react-dropzone
+npm install react-quill ==> Editor de blogs
+npm install @mux/mux-node && npm install @mux/mux-player-react ==> Preview de Videos
+npm install zustand ==> Manejo de Estado global
+npm install react-confetti
+npm install query-string
+npm install react-icons
+npm install stripe
+npm install recharts ==> Graficos
 ```
+
+## Backend Initial
+
+```bash
+npm i -D prisma
+npx prisma init
+npx prisma generate
+npx prisma db push
+npx prisma studio
+npx prisma migrate reset ==> Elimina toda la BD
+```
+
+### Execution Seed
+
+```bash
+node scripts/seed.ts
+```
+
+### Resources
+
+https://uploadthing.com/ => Bucket de almacenamiento
+https://clerk.com/docs => Autenticacion
+https://ui.shadcn.com/ => UI
+https://planetscale.com/ => MYSQL
+https://dashboard.mux.com/organizations/4jdo85/environments/8vkcln/video/assets => Preview De videos
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -38,3 +73,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Repository Original With Antonio
+
+https://github.com/AntonioErdeljac/next13-lms-platform
